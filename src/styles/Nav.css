@@ -1,0 +1,95 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2em;
+}
+
+.nav--items {
+  display: flex;
+  gap: 1.2em;
+}
+
+.nav--items a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.nav--items a:hover {
+  color: #7e84f0;
+}
+
+nav > button {
+  display: none;
+}
+
+@media (max-width: 675px) {
+  nav {
+    padding-inline: 0.6em;
+    position: relative;
+  }
+
+  .nav--items {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav--items a {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  nav li {
+    margin: 0.5em;
+    margin-inline: auto;
+  }
+  .navBar {
+    position: relative;
+  }
+
+  .navBar button {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .menuNav {
+    overflow-y: scroll;
+    text-align: center;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    background: #7e84f0;
+    bottom: 0;
+    height: 100vh;
+    width: 0;
+    overflow: hidden;
+    max-width: 180px;
+    z-index: 9;
+    margin-left: -40em;
+  }
+
+  .menuNav.showMenu {
+    width: 100%;
+    margin-left: 0;
+    right: 0;
+  }
+
+  a {
+    display: block;
+    margin-right: 1em;
+    padding-inline: 1em;
+    text-decoration: none;
+    color: #3fffd2;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .menuNav li:first-child {
+    margin-top: 7rem;
+  }
+}
