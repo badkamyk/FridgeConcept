@@ -5,9 +5,8 @@ import Input from "./componentElements/Form/Input";
 import Select from "./componentElements/Form/Select";
 import Button from "./componentElements/Form/Button";
 import { IFormFields } from "../interfaces/ProductInfo";
-import { fluids, solids } from "../utils/units";
+import { measureData } from "../utils/units";
 import { v4 as uuidv4 } from 'uuid';
-
 
 const Form = ({
     products,
@@ -24,9 +23,8 @@ const Form = ({
 }) => {
     const [formData, setFormData] = React.useState<IFormFields>({
         productName: "",
-        texture: "fluid",
-        measureTypes: fluids,
-        chosenMeasure: fluids[0],
+        measureTypes: measureData,
+        chosenMeasure: measureData[0],
         amount: 0,
         id: uuidv4()
     });
@@ -46,19 +44,21 @@ const Form = ({
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
-                chosenMeasure:
-                    name === "texture"
-                        ? value === "fluid"
-                            ? "ml"
-                            : "kg"
-                        : prevFormData.chosenMeasure,
-                [name]: name === "amount" ? +value : value,
-                measureTypes:
-                    name === "texture"
-                        ? value === "fluid"
-                            ? fluids
-                            : solids
-                        : prevFormData.measureTypes,
+                [name]: value
+
+            };
+        });
+    };
+
+    const handleAmountChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => {
+            return {
+                ...prevFormData,
+                [name]: parseInt(value, 10),
+
             };
         });
     };
@@ -67,7 +67,7 @@ const Form = ({
         return products.find((product) => product.id === id);
     }
 
-    const editProduct = (prevProducts: IFormFields[], id: string) => {
+    const editProducts = (prevProducts: IFormFields[], id: string) => {
         return prevProducts.map((product) => {
             if (product.id === id) {
                 return formData;
@@ -76,32 +76,29 @@ const Form = ({
         });
     }
 
-
     const setNewProducts = (prevProducts: IFormFields[], formData: IFormFields[], edit?: IFormFields) => {
         if (edit) {
-            return editProduct(prevProducts, edit.id);
+            return editProducts(prevProducts, edit.id);
         }
         return [...prevProducts, ...formData];
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (productExists(formData.id)) {
-            // setNewProducts(products, [formData], edit);
-            setProducts((prevProducts) => setNewProducts(prevProducts, [formData], edit));
-            resetEdit(undefined);
-        } else {
-            setProducts((prevProducts: IFormFields[]) => setNewProducts(prevProducts, [formData]));
-        }
+        setProducts((prevProducts) => setNewProducts(prevProducts, [formData], edit));
+        resetEdit(undefined);
+        resetForm();
+    };
+
+    const resetForm = () => {
         setFormData({
             productName: "",
-            texture: "fluid",
-            measureTypes: fluids,
-            chosenMeasure: fluids[0],
+            measureTypes: measureData,
+            chosenMeasure: measureData[0],
             amount: 0,
             id: uuidv4(),
         });
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -110,6 +107,7 @@ const Form = ({
                 id="productName"
                 name="productName"
                 type="text"
+                label={"Product name"}
                 ref={productInput}
                 value={formData.productName}
                 onChange={handleChange}
@@ -118,29 +116,23 @@ const Form = ({
             <Input
                 placeholder={"Type in amount"}
                 id="amount"
+                min="1"
                 max="100000"
+                label={"Amount"}
                 name="amount"
                 type="number"
-                value={formData.amount}
-                onChange={handleChange}
-            />
-
-            <Select
-                id="texture"
-                placeholder="Choose product type"
-                name="texture"
-                value={formData.texture}
-                onChange={handleChange}
+                value={formData.amount.toString()}
+                onChange={handleAmountChange}
             />
             <Select
                 id="measure"
-                placeholder="Choose measure type"
+                label="Choose measure type"
                 name="chosenMeasure"
                 value={formData.chosenMeasure}
-                measureTypes={formData.measureTypes}
+                list={formData.measureTypes}
                 onChange={handleChange}
             />
-            <Button btnText={edit ? "Edit product" : "Add product to fridge"} btnClass="form--btn" />
+            <Button text={edit ? "Edit product" : "Add product to fridge"} className="form--btn" />
         </form>
     );
 };

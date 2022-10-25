@@ -4,8 +4,8 @@ interface SelectProps {
     id: string;
     name: string;
     value: string;
-    measureTypes?: string[];
-    placeholder?: string;
+    list?: string[];
+    label?: string;
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -14,27 +14,18 @@ const Select = ({
     name,
     value,
     onChange,
-    measureTypes,
-    placeholder,
+    list,
+    label,
 }: SelectProps) => {
     return (
         <>
-            <label htmlFor={id}>{placeholder}</label>
+            <label htmlFor={id}>{label}</label>
             <select id={id} name={name} value={value} onChange={onChange}>
-                {name === "texture" ? (
-                    <>
-                        <option value="fluid">Fluid</option>
-                        <option value="solid">Solid</option>
-                    </>
-                ) : (
-                    measureTypes?.map((measureType) => {
-                        return (
-                            <option key={measureType} value={measureType}>
-                                {measureType}
-                            </option>
-                        );
-                    })
-                )}
+                {list?.map((item) => (
+                    <option key={item} value={item}>
+                        {item}
+                    </option>
+                ))}
             </select>
         </>
     );

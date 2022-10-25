@@ -5,6 +5,11 @@ nav {
   padding-inline: 2em;
 }
 
+.navBar {
+  width: 100vw;
+
+}
+
 .nav--items {
   display: flex;
   gap: 1.2em;
@@ -58,7 +63,7 @@ nav > button {
   }
 
   .menuNav {
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     text-align: center;
     list-style: none;
     position: fixed;
@@ -92,4 +97,8 @@ nav > button {
   .menuNav li:first-child {
     margin-top: 7rem;
   }
+}
+
+.active {
+  text-decoration: underline;
 }

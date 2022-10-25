@@ -1,10 +1,9 @@
-import { FluidData, Option, SolidData } from "../types/MeasureTypes";
+import { Option } from "../types/MeasureTypes";
 
 export interface IFormFields {
     productName: string;
-    texture: "fluid" | "solid" | "";
     amount: number;
-    measureTypes?: FluidData | SolidData;
+    measureTypes?: string[];
     chosenMeasure: Option | "";
     id: string;
 }

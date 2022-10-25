@@ -1,13 +1,15 @@
 import * as React from "react";
+import {ReactNode} from "react";
 
 interface ButtonProps {
-    btnText: string;
-    btnClass?: string;
+    text: string | ReactNode
+    className?: string;
+    style?: React.CSSProperties;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ btnText, btnClass, onClick }: ButtonProps) => {
-    return <button onClick={onClick} className={btnClass}>{btnText}</button>;
+const Button = ({ text, className, onClick, style }: ButtonProps) => {
+    return <button onClick={onClick} className={className} style={style}>{text}</button>;
 };
 
 export default Button;

@@ -1,6 +1,5 @@
 .App {
   min-height: 100vh;
-  border: 1px solid pink;
   width: 100vw;
 }
 
@@ -74,6 +73,15 @@ textarea,
 select {
   font: inherit;
 }
+
+.form-item--container {
+  display: flex;
+  margin: 1em;
+  justify-content: space-evenly;
+  /*width: 30%;*/
+}
+
+
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
