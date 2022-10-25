@@ -12,48 +12,28 @@ import {
 } from "react-router-dom";
 import './index.css'
 import ErrorPage from "./error-page";
-import {ContextProvider} from "./Context";
+import { ContextProvider } from "./Context";
 
 const router = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <App/>,
-    //     errorElement: <ErrorPage/>,
-    // },
-    // {
-    //     path: "/recipes",
-    //     element: <Recipes/>,
-    //     errorElement: <ErrorPage/>,
-    // }
-    // make navbar visible on every page
     {
         path: "/",
-        element: <Nav/>,
-        errorElement: <ErrorPage/>,
+        element: <Nav />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <App/>,
-                errorElement: <ErrorPage/>,
+                element: <App />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: "/recipes",
-                element: <Recipes/>,
-                errorElement: <ErrorPage/>,
-                // children: [
-                //     {
-                //         path: ":id",
-                //         element: <RecipesDetails/>,
-                //         errorElement: <ErrorPage/>,
-                //     }
-                // ]
-
-
+                element: <Recipes />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: "/recipes/:id",
-                element: <RecipesDetails/>,
-                errorElement: <ErrorPage/>,
+                element: <RecipesDetails />,
+                errorElement: <ErrorPage />,
             }
         ]
     }
@@ -63,7 +43,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         {/*<App/>*/}
         <ContextProvider>
-            <RouterProvider router={router}/>
+            <RouterProvider router={router} />
         </ContextProvider>
     </React.StrictMode>
 )
