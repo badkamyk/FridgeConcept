@@ -15,12 +15,11 @@ interface InputProps {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({ id, className, name, label, type, value, placeholder, min, max, onChange }, ref) => {
+    ({id, className, name, label, type, value, placeholder,min, max, onChange}, ref) => {
         return (
             <>
                 <label htmlFor={id}>{label}</label>
                 <input
-                    required
                     id={id}
                     name={name}
                     type={type}

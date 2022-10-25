@@ -1,19 +1,19 @@
 import * as React from "react";
-import { ChangeEvent, useRef } from "react";
+import {ChangeEvent, useRef} from "react";
 import "../styles/Form.css";
 import Input from "./componentElements/Form/Input";
 import Select from "./componentElements/Form/Select";
 import Button from "./componentElements/Form/Button";
-import { IFormFields } from "../interfaces/ProductInfo";
-import { measureData } from "../utils/units";
-import { v4 as uuidv4 } from 'uuid';
+import {IFormFields} from "../interfaces/ProductInfo";
+import {measureData} from "../utils/units";
+import {v4 as uuidv4} from 'uuid';
 
 const Form = ({
-    products,
-    setProducts,
-    edit,
-    resetEdit
-}: {
+                  products,
+                  setProducts,
+                  edit,
+                  resetEdit
+              }: {
     products: IFormFields[];
     setProducts: (
         product: ((prevProducts: IFormFields[]) => IFormFields[]) | []
@@ -40,7 +40,7 @@ const Form = ({
     const handleChange = (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
@@ -53,7 +53,7 @@ const Form = ({
     const handleAmountChange = (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
@@ -116,7 +116,7 @@ const Form = ({
             <Input
                 placeholder={"Type in amount"}
                 id="amount"
-                min="1"
+                // min="1"
                 max="100000"
                 label={"Amount"}
                 name="amount"
@@ -132,7 +132,7 @@ const Form = ({
                 list={formData.measureTypes}
                 onChange={handleChange}
             />
-            <Button text={edit ? "Edit product" : "Add product to fridge"} className="form--btn" />
+            <Button text={edit ? "Edit product" : "Add product to fridge"} className="form--btn"/>
         </form>
     );
 };

@@ -49,9 +49,6 @@ button.recipes-details--add-button {
     transition: all 0.3s ease-out;
 }
 
-button.recipes-details--add-button:hover {
-    color: #7e84f0;
-}
 
 /** {*/
 /*    outline: 1px solid red;*/
@@ -62,4 +59,42 @@ button.recipes-details--add-button:hover {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+button.activeCart {
+    color: lawngreen;
+}
+button:focus,
+button:focus-visible {
+    outline: 0;
+}
+.fa-thumbs-up {
+    color: lawngreen;
+}
+
+.checked {
+    color: lawngreen;
+}
+
+.recipes-details--ingredients--btn {
+    background-color: #7e84f0;
+    border: none;
+    color: white;
+    padding: 12px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    margin-right: 1em;
+}
+
+.recipes-details--ingredients--btn:hover {
+    background-color: #5e64d0;
+}
+
+.recipes-details--ingredients--btn.active {
+    background-color: #41adad;
 }

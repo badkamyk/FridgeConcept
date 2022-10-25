@@ -10,7 +10,7 @@ export default function Recipes() {
     const [mealTag, setMealTag] = React.useState<string[]>([]);
 
     const handleMealInput = (recipe: { id: string, name: string, tags: string[], description: string, ingredients: {} }) => {
-        return recipe.name.toLowerCase().includes(mealInput.toLowerCase())
+        return recipe.productName.toLowerCase().includes(mealInput.toLowerCase())
     }
 
     const filterRecipes = () => {
@@ -50,7 +50,7 @@ export default function Recipes() {
                 return (
                     <Link to={recipe.id} key={recipe.id}>
                         <div className={"recipeItem"}>
-                            <h2 style={{marginBottom: "9px"}}>{recipe.name}</h2>
+                            <h2 style={{marginBottom: "9px"}}>{recipe.productName}</h2>
                             <div>
                                 {recipe.tags.map((tag) => {
                                     return <span style={mealTag.includes(tag) ? {background: "#41adad"} : undefined}
