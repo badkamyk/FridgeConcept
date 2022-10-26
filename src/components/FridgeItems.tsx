@@ -25,7 +25,6 @@ const FridgeItems = ({
         setPage(1);
 
     };
-    // @ts-ignore
     return (
         <div className="fridge-items--container">
             <h2>My Fridge</h2>

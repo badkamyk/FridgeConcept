@@ -1,0 +1,47 @@
+.cart--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 3em;
+}
+
+/** {*/
+/*  outline: 1px solid red;*/
+/*  outline-offset: -1px;*/
+/*}*/
+
+.checked {
+    color: lawngreen;
+}
+.fa-check {
+    font-size: 27px;
+}
+
+
+.cart--finish-btn {
+    background-color: #7e84f0;
+    border: none;
+    color: white;
+    padding: 12px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.cart--finish-btn:hover,
+.cart--finish-btn:focus {
+    background-color: #5e64d0;
+
+}
+
+td {
+    font-size: 1.27rem;
+}

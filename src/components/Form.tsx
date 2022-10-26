@@ -7,6 +7,7 @@ import Button from "./componentElements/Form/Button";
 import {IFormFields} from "../interfaces/ProductInfo";
 import {measureData} from "../utils/units";
 import {v4 as uuidv4} from 'uuid';
+import {Option} from "../types/MeasureTypes";
 
 const Form = ({
                   products,
@@ -16,8 +17,10 @@ const Form = ({
               }: {
     products: IFormFields[];
     setProducts: (
-        product: ((prevProducts: IFormFields[]) => IFormFields[]) | []
+        product: ((prevProducts: IFormFields[] |[...({ amount: number; chosenMeasure: Option | ""; measureTypes?: string[]; id: string; productName: string }
+            | IFormFields)[]]) => IFormFields[])| [] | IFormFields[] | any
     ) => void;
+    // setProducts: any
     edit?: IFormFields;
     resetEdit: (edit: IFormFields | undefined) => void;
 }) => {
@@ -33,7 +36,7 @@ const Form = ({
     if (edit) {
         if (formData.id !== edit.id) {
             productInput.current?.focus();
-            setFormData(edit);
+            setFormData({...edit, measureTypes: measureData});
         }
     }
 
@@ -85,7 +88,9 @@ const Form = ({
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setProducts((prevProducts) => setNewProducts(prevProducts, [formData], edit));
+        const removedMeasureTypes = structuredClone(formData);
+        delete removedMeasureTypes.measureTypes;
+        setProducts((prevProducts: IFormFields[]) => setNewProducts(prevProducts, [removedMeasureTypes], edit));
         resetEdit(undefined);
         resetForm();
     };

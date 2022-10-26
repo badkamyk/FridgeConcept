@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './routes/App'
+import Cart from './routes/Cart'
 import Nav from './components/Nav'
 import Recipes from "./routes/Recipes";
 import RecipesDetails from "./routes/RecipesDetails";
@@ -40,19 +41,15 @@ const router = createBrowserRouter([
                 path: "/recipes",
                 element: <Recipes/>,
                 errorElement: <ErrorPage/>,
-                // children: [
-                //     {
-                //         path: ":id",
-                //         element: <RecipesDetails/>,
-                //         errorElement: <ErrorPage/>,
-                //     }
-                // ]
-
-
             },
             {
                 path: "/recipes/:id",
                 element: <RecipesDetails/>,
+                errorElement: <ErrorPage/>,
+            },
+            {
+                path: "/cart",
+                element: <Cart/>,
                 errorElement: <ErrorPage/>,
             }
         ]

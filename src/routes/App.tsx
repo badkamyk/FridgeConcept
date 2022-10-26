@@ -26,12 +26,11 @@ function App() {
     //     setProducts(filteredProducts);
     // }
 
-
+    // console.log(products)
 
 
     return (
         <div className="App">
-            {/*<Nav />*/}
             <div className="form-item--container">
                 <Form
                     edit={edit}

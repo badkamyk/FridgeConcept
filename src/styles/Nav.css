@@ -10,6 +10,15 @@ nav {
 
 }
 
+.logo img{
+  width: 30%;
+  border-radius: 21%;
+}
+
+.logo img:hover{
+  cursor: pointer;
+}
+
 .nav--items {
   display: flex;
   gap: 1.2em;

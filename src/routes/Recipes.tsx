@@ -9,7 +9,7 @@ export default function Recipes() {
     const [mealInput, setMealInput] = React.useState("");
     const [mealTag, setMealTag] = React.useState<string[]>([]);
 
-    const handleMealInput = (recipe: { id: string, name: string, tags: string[], description: string, ingredients: {} }) => {
+    const handleMealInput = (recipe: { id: string, productName: string, tags: string[], description: string, ingredients: {} }) => {
         return recipe.productName.toLowerCase().includes(mealInput.toLowerCase())
     }
 

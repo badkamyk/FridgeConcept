@@ -28,7 +28,7 @@ const Nav = () => {
         <>
         <nav className="navBar">
             <a className="logo" href="/">
-                <img src="../../public/vite.svg" alt="Fridge Checker website" />
+                <img src="../../public/fridge-logo.png" alt="Fridge Checker website" />
             </a>
             <Button onClick={handleToggle} text={navbarOpen ? "Close menu" : "Open menu"}/>
             <ul
@@ -44,7 +44,7 @@ const Nav = () => {
 
                 </li>
                 <li onClick={handleActiveLink}>
-                    <Link to={`/shopping-cart`}>Shopping Cart</Link>
+                    <Link to={`/cart`}>Shopping Cart</Link>
                 </li>
             </ul>
         </nav>

@@ -72,6 +72,7 @@ button:focus-visible {
 
 .form--icons {
   font-size: 21px;
+  margin-right: 0.6em;
   color: #fff;
   background-color: transparent;
 }
