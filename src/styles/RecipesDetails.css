@@ -98,3 +98,10 @@ button:focus-visible {
 .recipes-details--ingredients--btn.active {
     background-color: #41adad;
 }
+
+
+.recipes-details--amount {
+    margin-left: 1em;
+    font-size: 0.9rem;
+    color: #3fffd2;
+}

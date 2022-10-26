@@ -1,88 +1,80 @@
-import {useParams} from "react-router-dom";
-import {useContext} from "react";
-import {Context} from "../Context";
-import {recipesData} from "../recipesData";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../Context";
+import { recipesData } from "../recipesData";
 import "../styles/RecipesDetails.css";
 import * as React from "react";
 import Button from "../components/componentElements/Form/Button";
-import {Option} from "../types/MeasureTypes";
+import { IFormFields } from "../interfaces/ProductInfo";
+
+type RecipeDetailsParams = {
+    id: string;
+    productName: string;
+    amount: number;
+    chosenMeasure: string;
+}
 
 function RecipesDetails() {
-    const {id} = useParams();
-    const {products, cart, setCart} = useContext(Context);
+    const { id } = useParams();
+    const { products, cart, setCart } = useContext(Context);
 
     const recipe = recipesData.find(recipe => recipe.id === id);
 
-    // export interface IFormFields {
-    //     productName: string;
-    //     amount: number;
-    //     measureTypes?: string[];
-    //     chosenMeasure: Option | "";
-    //     id: string;
-    // }
-    console.log(cart)
-    const toggleActiveAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.currentTarget.classList.toggle("activeCart");
+    const checkIfProductExists = (item: IFormFields[] | RecipeDetailsParams[], productName: string) => {
+        return item.find(product => product.productName.toLowerCase() === productName.toLowerCase());
     }
 
-    const checkIfProductInCart = (productName: string) => {
-        const productInCart = cart.find(product => product.productName.toLowerCase() === productName.toLowerCase());
-        return !!productInCart;
-    }
-
-    const checkIfProductInProducts = (productName: string) => {
-        const productInProducts = products.find(product => product.productName.toLowerCase() === productName.toLowerCase());
-        return !!productInProducts;
+    const subtractAmountWithRecipe = (productName: string) => {
+        const productInProducts = checkIfProductExists(products, productName);
+        const productInRecipe = recipe?.ingredients.find(product => product.productName.toLowerCase() === productName.toLowerCase());
+        if (productInProducts && productInRecipe) {
+            return productInProducts.amount - productInRecipe.amount;
+        } else if (productInRecipe) {
+            return 0 - productInRecipe?.amount;
+        } else {
+            return 0;
+        }
     }
 
     const handleIcons = (productName: string) => {
-        if (checkIfProductInProducts(productName)) {
+        if (!!checkIfProductExists(products, productName) && subtractAmountWithRecipe(productName) >= 0) {
             return "fa fa-check checked";
-        } else if (checkIfProductInCart(productName)) {
-            // return "fa fa-check checked";
+        } else if (!!checkIfProductExists(cart, productName)) {
             return "fa fa-cart-plus checked";
         } else {
             return "fa fa-cart-plus";
         }
     }
 
+    const checkIfEveryProductInCart = (ingredients: RecipeDetailsParams[]) => {
+        return ingredients.every(ingredient => !!checkIfProductExists(cart, ingredient.productName));
+    }
+
     const addRemoveAllProductsFromCart = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (recipe && e.currentTarget.textContent === "Add all missing products to cart") {
-            const productsToAdd = recipe.ingredients.filter(product => !checkIfProductInCart(product.productName) && !checkIfProductInProducts(product.productName));
-            e.currentTarget.textContent = "Remove all products from cart";
-            const productsToAddToCart = productsToAdd.map(product => {
-                    return {
-                        productName: product.productName,
-                        amount: product.amount,
-                        measureTypes: product.chosenMeasure,
-                        chosenMeasure: product.chosenMeasure,
-                        id: product.id,
-                    }
-                }
+            const productsToAdd = recipe.ingredients.filter(product =>
+                (subtractAmountWithRecipe(product.productName) < 0 && !checkIfProductExists(cart, product.productName)));
+            const changeAmount = productsToAdd.map(product => {
+                return { ...product, amount: Math.abs(subtractAmountWithRecipe(product.productName)) }
+            }
             )
-            setCart([...cart, ...productsToAdd]);
+            e.currentTarget.textContent = "Remove all products from cart";
+            setCart([...cart, ...changeAmount]);
         } else {
             e.currentTarget.textContent = "Add all missing products to cart";
-            setCart(cart.filter(product => !recipe?.ingredients.some(ingredient => ingredient.productName.toLowerCase() === product.productName.toLowerCase())));
+            setCart(cart.filter(product => !recipe?.ingredients.some(ingredient => checkIfProductExists([product], ingredient.productName))));
         }
     }
 
     const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>, recipeProduct: { id: string; productName: string; amount: number; chosenMeasure: string; }) => {
-        e.preventDefault();
-        if (checkIfProductInCart(recipeProduct.productName)) {
+        if (checkIfProductExists(cart, recipeProduct.productName)) {
             setCart(cart.filter(product => product.productName !== recipeProduct.productName));
-            // setCart(prevCart => prevCart.map(product => {
-            //     if (product.productName === recipeProduct.productName && product.chosenMeasure === recipeProduct.chosenMeasure && product.amount === recipeProduct.amount) {
-            //         return {...product, amount: product.amount + recipeProduct.amount}
-            //     }
-            //     return product;
-            // })
-
         } else {
-            setCart([...cart, recipeProduct])
+            setCart([...cart, {
+                ...recipeProduct,
+                amount: Math.abs(subtractAmountWithRecipe(recipeProduct.productName))
+            }]);
         }
-
-        // toggleActiveAddToCart(e);
     }
 
     return (
@@ -94,26 +86,30 @@ function RecipesDetails() {
                 ))}
             </div>
             <div className="recipes-details--image-ingredients-container">
-                <img className="recipes-details--image" src={recipe?.image} alt={recipe?.productName}/>
+                <img className="recipes-details--image" src={recipe?.image} alt={recipe?.productName} />
                 <div className="recipes-details--ingredients">
                     <h2>Ingredients</h2>
                     <ul>
                         {recipe?.ingredients.map((ingredient) => {
                             return <li className="align-list" key={ingredient.productName}>
                                 <Button className="recipes-details--add-button"
-                                        onClick={e => handleAddToCart(e, ingredient)}
-                                        text={<i
-                                            // className={checkIfProductInCart(ingredient.productName) ? "fa fa-check" : "fa fa-cart-plus"}
-                                            className={handleIcons(ingredient.productName)}
-                                            style={{fontSize: "33px"}}></i>}/>
+                                    onClick={e => handleAddToCart(e, ingredient)}
+                                    text={<i
+                                        className={handleIcons(ingredient.productName)}
+                                        style={{ fontSize: "33px" }}></i>} />
                                 {ingredient.productName}
-                                {/*thumbs-up*/}
                                 <span> {ingredient.amount} {ingredient.chosenMeasure}</span>
+                                <span
+                                    className="recipes-details--amount"> {subtractAmountWithRecipe(ingredient.productName) < 0 &&
+                                        `You need ${subtractAmountWithRecipe(ingredient.productName) * -1} more ${ingredient.chosenMeasure}`} </span>
                             </li>
                         })}
                     </ul>
                     <Button onClick={addRemoveAllProductsFromCart} className={"recipes-details--ingredients--btn"}
-                            text={"Add all missing products to cart"}/>
+                        text={recipe ? checkIfEveryProductInCart(recipe.ingredients)
+                            ? "Remove all products from cart"
+                            : "Add all missing products to cart"
+                            : null} />
                 </div>
             </div>
             <p className="recipes-details--description">{recipe?.description}</p>

@@ -36,7 +36,7 @@ function App() {
             <FridgeItems
                 handleEdit={handleEdit}
                 handleRemove={handleRemove}
-                products={products.slice(-2).reverse()}
+                products={products}
             />
         </div>
     );
