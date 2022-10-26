@@ -1,54 +1,52 @@
 .recipes-details--container {
-    padding: 1.2em;
+  padding: 1.2em;
 }
 
 .recipes-details--description {
-    max-width: 57%;
-    margin-top: 1em;
+  max-width: 57%;
+  margin-top: 1em;
 }
 
 .recipes-details--image {
-    width: 33%;
-    border-radius: 1em;
+  width: 33%;
+  border-radius: 1em;
 }
 
-
 .recipes-details--tag {
-    background-color: #7e84f0;
-    border: none;
-    color: white;
-    padding: 12px 27px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition: all 0.3s ease-out;
-    margin-right: 1em;
-    border-radius: 12px;
-    margin-block: 1em;
+  background-color: #7e84f0;
+  border: none;
+  color: white;
+  padding: 12px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all 0.3s ease-out;
+  margin-right: 1em;
+  border-radius: 12px;
+  margin-block: 1em;
 }
 
 .recipes-details--image-ingredients-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1.8em;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1.8em;
+  align-items: center;
 }
 
 ul {
-    list-style-type: none;
-    font-size: 1.1rem;
-    padding: 0;
+  list-style-type: none;
+  font-size: 1.1rem;
+  padding: 0;
 }
 
 button.recipes-details--add-button {
-    background-color: transparent;
-    border: none;
-    color: red;
-    text-align: center;
-    transition: all 0.3s ease-out;
+  background-color: transparent;
+  border: none;
+  color: red;
+  text-align: center;
+  transition: all 0.3s ease-out;
 }
-
 
 /** {*/
 /*    outline: 1px solid red;*/
@@ -56,63 +54,66 @@ button.recipes-details--add-button {
 /*}*/
 
 .align-list {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 button.activeCart {
-    color: lawngreen;
+  color: lawngreen;
 }
 button:focus,
 button:focus-visible {
-    outline: 0;
+  outline: 0;
 }
 
 .checked {
-    color: lawngreen;
+  color: lawngreen;
 }
 
 .recipes-details--ingredients--btn {
-    background-color: #7e84f0;
-    border: none;
-    color: white;
-    padding: 12px 27px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    margin-right: 1em;
+  background-color: #7e84f0;
+  border: none;
+  color: white;
+  padding: 12px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin-right: 1em;
+}
+
+.recipes-details--ingredients--btn:disabled {
+  cursor: not-allowed;
 }
 
 .recipes-details--ingredients--btn:hover {
-    background-color: #5e64d0;
+  background-color: #5e64d0;
 }
 
 .recipes-details--ingredients--btn.active {
-    background-color: #41adad;
+  background-color: #41adad;
 }
 
-
 .recipes-details--amount {
-    margin-left: 1em;
-    font-size: 0.9rem;
-    color: #3fffd2;
+  margin-left: 1em;
+  font-size: 0.9rem;
+  color: #3fffd2;
 }
 
 .cart--link {
-    background-color: #41adad;
-    border: none;
-    color: white;
-    padding: 12px 27px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition: all 0.3s ease-out;
-    margin-right: 1em;
-    border-radius: 12px;
-    margin-block: 1em;
+  background-color: #41adad;
+  border: none;
+  color: white;
+  padding: 12px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: all 0.3s ease-out;
+  margin-right: 1em;
+  border-radius: 12px;
+  margin-block: 1em;
 }

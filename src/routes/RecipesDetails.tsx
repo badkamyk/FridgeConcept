@@ -1,11 +1,11 @@
-import {Link, useParams} from "react-router-dom";
-import {useContext} from "react";
-import {Context} from "../Context";
-import {recipesData} from "../recipesData";
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../Context";
+import { recipesData } from "../recipesData";
 import "../styles/RecipesDetails.css";
 import * as React from "react";
 import Button from "../components/componentElements/Form/Button";
-import {IFormFields} from "../interfaces/ProductInfo";
+import { IFormFields } from "../interfaces/ProductInfo";
 
 type RecipeDetailsParams = {
     id: string;
@@ -15,8 +15,8 @@ type RecipeDetailsParams = {
 }
 
 function RecipesDetails() {
-    const {id} = useParams();
-    const {products, cart, setCart} = useContext(Context);
+    const { id } = useParams();
+    const { products, cart, setCart } = useContext(Context);
 
     const recipe = recipesData.find(recipe => recipe.id === id);
 
@@ -52,13 +52,17 @@ function RecipesDetails() {
         return ingredients.every(ingredient => !!checkIfProductExists(cart, ingredient.productName));
     }
 
+    const checkIfEveryProductinProducts = (ingredients: RecipeDetailsParams[]) => {
+        return ingredients.every(ingredient => !!checkIfProductExists(products, ingredient.productName) && subtractAmountWithRecipe(ingredient.productName) >= 0);
+    }
+
     const addRemoveAllProductsFromCart = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (recipe && e.currentTarget.textContent === "Add all missing products to cart") {
             const productsToAdd = recipe.ingredients.filter(product =>
                 (subtractAmountWithRecipe(product.productName) < 0 && !checkIfProductExists(cart, product.productName)));
             const changeAmount = productsToAdd.map(product => {
-                    return {...product, amount: Math.abs(subtractAmountWithRecipe(product.productName))}
-                }
+                return { ...product, amount: Math.abs(subtractAmountWithRecipe(product.productName)) }
+            }
             )
             e.currentTarget.textContent = "Remove all products from cart";
             setCart([...cart, ...changeAmount]);
@@ -88,30 +92,30 @@ function RecipesDetails() {
                 ))}
             </div>
             <div className="recipes-details--image-ingredients-container">
-                <img className="recipes-details--image" src={recipe?.image} alt={recipe?.productName}/>
+                <img className="recipes-details--image" src={recipe?.image} alt={recipe?.productName} />
                 <div className="recipes-details--ingredients">
                     <h2>Ingredients</h2>
                     <ul>
                         {recipe?.ingredients.map((ingredient) => {
                             return <li className="align-list" key={ingredient.productName}>
                                 <Button className="recipes-details--add-button"
-                                        onClick={e => handleAddToCart(e, ingredient)}
-                                        text={<i
-                                            className={handleIcons(ingredient.productName)}
-                                            style={{fontSize: "33px"}}></i>}/>
+                                    onClick={e => handleAddToCart(e, ingredient)}
+                                    text={<i
+                                        className={handleIcons(ingredient.productName)}
+                                        style={{ fontSize: "33px" }}></i>} />
                                 {ingredient.productName}
                                 <span> {ingredient.amount} {ingredient.chosenMeasure}</span>
                                 <span
                                     className="recipes-details--amount"> {subtractAmountWithRecipe(ingredient.productName) < 0 &&
-                                    `You need ${subtractAmountWithRecipe(ingredient.productName) * -1} more ${ingredient.chosenMeasure}`} </span>
+                                        `You need ${subtractAmountWithRecipe(ingredient.productName) * -1} more ${ingredient.chosenMeasure}`} </span>
                             </li>
                         })}
                     </ul>
-                    <Button onClick={addRemoveAllProductsFromCart} className={"recipes-details--ingredients--btn"}
-                            text={recipe ? checkIfEveryProductInCart(recipe.ingredients)
-                                    ? "Remove all products from cart"
-                                    : "Add all missing products to cart"
-                                : null}/>
+                    <Button disabled={recipe && checkIfEveryProductinProducts(recipe.ingredients)} onClick={addRemoveAllProductsFromCart} className={"recipes-details--ingredients--btn"}
+                        text={recipe ? checkIfEveryProductinProducts(recipe.ingredients) ? "You have all needed products" : checkIfEveryProductInCart(recipe.ingredients)
+                            ? "Remove all products from cart"
+                            : "Add all missing products to cart"
+                            : null} />
                     <Link to="/cart" className="cart--link">Go to shopping cart</Link>
 
                 </div>

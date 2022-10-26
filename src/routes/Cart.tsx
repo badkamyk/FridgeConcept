@@ -1,34 +1,33 @@
-import {useContext, useState} from "react";
-import {Context} from "../Context";
+import { useContext, useState } from "react";
+import { Context } from "../Context";
 import "../styles/Cart.css";
-import {IFormFields} from "../interfaces/ProductInfo";
+import { IFormFields } from "../interfaces/ProductInfo";
 import Button from "../components/componentElements/Form/Button";
 import * as React from "react";
 
 const Cart = () => {
-    const {cart, setCart, products, setProducts} = useContext(Context);
+    const { cart, setCart, products, setProducts } = useContext(Context);
     const [edit, setEdit] = useState<IFormFields | undefined>(undefined);
 
-    const editCartForm = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
-        const productToEdit = cart.find((product) => product.id === id);
-        if (productToEdit) {
-            setEdit(productToEdit);
-        }
-    }
+    // const editCartForm = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    //     const productToEdit = cart.find((product) => product.id === id);
+    //     if (productToEdit) {
+    //         setEdit(productToEdit);
+    //     }
+    // }
 
     const clearCart = () => {
         setCart([]);
     }
-    // console.log(products)
 
     const findItemInProduct = () => {
-        const cartAndProducts =  products.map((product) => {
-           const findItem = cart.find((item) => item.productName.toLowerCase() === product.productName.toLowerCase())
-           if (findItem) {
-               return {...product, amount: product.amount + findItem.amount}
-           } else {
+        const cartAndProducts = products.map((product) => {
+            const findItem = cart.find((item) => item.productName.toLowerCase() === product.productName.toLowerCase())
+            if (findItem) {
+                return { ...product, amount: product.amount + findItem.amount }
+            } else {
                 return product
-           }
+            }
         })
         const onlyInCart = cart.filter((item) => !products.find((product) => product.productName.toLowerCase() === item.productName.toLowerCase()))
         setProducts([...cartAndProducts, ...onlyInCart])
@@ -41,20 +40,20 @@ const Cart = () => {
 
 
     const cartHTMLTable = cart.map((product) => {
-            return (
-                <tr style={{borderRadius: "1em"}} key={product.id}>
-                    <td style={{border: "0"}}><Button
-                        onClick={(e) => handleRemoveCartItem(e, product.id)}
-                        text={<i className="fa fa-trash-o"></i>} className={"form--icons"}
-                    /></td>
-                    <td>{product.productName}</td>
-                    <td>{product.amount} {product.chosenMeasure}</td>
-                    <td style={{border: "0"}}><Button onClick={toggleCheckedCartItem} text={<i className='fa fa-check'></i>}
-                                                      className={"form--icons"}/></td>
-                </tr>
+        return (
+            <tr style={{ borderRadius: "1em" }} key={product.id}>
+                <td style={{ border: "0" }}><Button
+                    onClick={(e) => handleRemoveCartItem(e, product.id)}
+                    text={<i className="fa fa-trash-o"></i>} className={"form--icons"}
+                /></td>
+                <td>{product.productName}</td>
+                <td>{product.amount} {product.chosenMeasure}</td>
+                <td style={{ border: "0" }}><Button onClick={toggleCheckedCartItem} text={<i className='fa fa-check'></i>}
+                    className={"form--icons"} /></td>
+            </tr>
 
-            )
-        }
+        )
+    }
     )
     const handleRemoveCartItem = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
         const filteredProducts = cart.filter((product) => product.id !== id);
@@ -69,9 +68,9 @@ const Cart = () => {
             </ul>
             {cart.length > 0 &&
                 <>
-                    <Button onClick={clearCart} text={"Remove all from cart"} className={"cart--finish-btn"}/>
+                    <Button onClick={clearCart} text={"Remove all from cart"} className={"cart--finish-btn"} />
                     <Button onClick={findItemInProduct} text={"Add all to products list"}
-                            className={"cart--finish-btn"}/>
+                        className={"cart--finish-btn"} />
                 </>}
         </div>
     );
