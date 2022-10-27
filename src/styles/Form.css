@@ -1,6 +1,6 @@
 form {
   margin-block: 3em;
-  margin-left: 100px;
+  margin-inline: auto;
   width: 50%;
 }
 
@@ -26,7 +26,7 @@ label {
   color: #fff;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 1000px) {
   input,
   select {
     width: 100%;
@@ -48,5 +48,21 @@ label {
   .form--btn {
     width: 100%;
     padding-inline: 2em;
+  }
+}
+
+@media (min-width: 2500px) {
+  * {
+    font-size: 2rem;
+  }
+
+  input,
+  label,
+  select {
+    font-size: 2rem;
+  }
+
+  option {
+    font-size: 1rem;
   }
 }

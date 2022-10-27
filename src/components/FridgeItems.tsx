@@ -15,7 +15,7 @@ const FridgeItems = ({
 }) => {
     // set pagination for products with react mui
     const [page, setPage] = React.useState(1);
-    const [rowsPerPage, setRowsPerPage] = React.useState(window.innerWidth < 600 ? 3 : 9);
+    const [rowsPerPage, setRowsPerPage] = React.useState(window.innerWidth < 800 ? 3 : 9);
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
 

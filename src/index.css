@@ -14,10 +14,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-/** {*/
-/*  outline: 1px solid red;*/
-/*  outline-offset: -1px;*/
-/*}*/
+/* * {
+  outline: 1px solid red;
+  outline-offset: -1px;
+} */
 a {
   font-weight: 500;
   color: #646cff;
@@ -57,6 +57,10 @@ td {
   border: 1px solid white;
   border-collapse: collapse;
   padding: 12px;
+}
+
+td {
+  max-width: 0;
 }
 
 button {
@@ -120,6 +124,7 @@ button:focus-visible {
 
 .fridge-items--container {
   max-width: 30%;
+  margin-right: 6em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,7 +138,7 @@ button:focus-visible {
   font-size: 1rem;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 1000px) {
   table,
   th,
   td {
@@ -166,10 +171,47 @@ button:focus-visible {
   }
 
   .mui-pagination--container {
-    bottom: 0px;
+    bottom: 0;
   }
 
   nav li {
     margin: 0;
+  }
+}
+
+@media (min-width: 2500px) {
+  /* * {
+    font-size: 2rem;
+  } */
+  table,
+  th,
+  td {
+    padding: 18px;
+  }
+
+  tr > td {
+    font-size: 2.5rem;
+  }
+
+  th {
+    font-size: 2.5rem;
+  }
+
+  tr .form--icons {
+    font-size: 42px;
+  }
+
+  .fridge-items--container {
+    font-size: 1.5rem;
+  }
+
+  .fridge-items--container > h2 {
+    font-size: 2.7rem;
+    margin-bottom: 0.3em;
+  }
+
+  .mui-pagination--container {
+    bottom: 490px;
+    font-size: 2rem;
   }
 }
