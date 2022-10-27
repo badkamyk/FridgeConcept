@@ -9,13 +9,14 @@ interface InputProps {
     placeholder: string;
     min?: string;
     max?: string;
+    maxLength?: number;
     className?: string;
     ref?: React.RefObject<HTMLInputElement>;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({id, className, name, label, type, value, placeholder,min, max, onChange}, ref) => {
+    ({ id, className, name, label, type, value, placeholder, min, max, maxLength, onChange }, ref) => {
         return (
             <>
                 <label htmlFor={id}>{label}</label>
@@ -24,6 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     name={name}
                     type={type}
                     value={value}
+                    maxLength={maxLength}
                     min={min}
                     max={max}
                     className={className}

@@ -7,15 +7,14 @@ nav {
 
 .navBar {
   width: 100vw;
-
 }
 
-.logo img{
+.logo img {
   width: 30%;
   border-radius: 21%;
 }
 
-.logo img:hover{
+.logo img:hover {
   cursor: pointer;
 }
 
@@ -54,7 +53,7 @@ nav > button {
     text-align: center;
   }
 
-  nav li {
+  .navBar li {
     margin: 0.5em;
     margin-inline: auto;
   }

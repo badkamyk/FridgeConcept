@@ -1,37 +1,52 @@
 form {
-    margin-block: 3em;
-    margin-left: 100px;
-    width: 50%;
-    /*border: 1px solid pink;*/
-
+  margin-block: 3em;
+  margin-left: 100px;
+  width: 50%;
 }
 
-form > div {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*margin-bottom: 1em;*/
-
-}
-
-input, select, label {
-    display: block;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    width: 51%;
-    font-size: 1.2rem;
+input,
+select,
+label {
+  display: block;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  width: 51%;
+  font-size: 1.2rem;
 }
 
 label {
-    text-align: left;
-    margin-block: 0;
+  text-align: left;
+  margin-block: 0;
 }
-
 
 .form--btn {
-    display: block;
-    padding: 1em 3.3em;
-    width: 50%;
-    color: #FFF;
-    /*justify-self: center;*/
+  display: block;
+  padding: 1em 3.3em;
+  width: 50%;
+  color: #fff;
 }
 
+@media (max-width: 420px) {
+  input,
+  select {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  label {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .logo {
+    height: inherit;
+  }
+
+  .form-item--container {
+    display: block;
+  }
+  .form--btn {
+    width: 100%;
+    padding-inline: 2em;
+  }
+}

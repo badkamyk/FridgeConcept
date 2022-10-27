@@ -51,7 +51,6 @@ const Cart = () => {
                 <td style={{ border: "0" }}><Button onClick={toggleCheckedCartItem} text={<i className='fa fa-check'></i>}
                     className={"form--icons"} /></td>
             </tr>
-
         )
     }
     )

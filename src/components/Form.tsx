@@ -8,6 +8,8 @@ import { IFormFields } from "../interfaces/ProductInfo";
 import { measureData } from "../utils/units";
 import { v4 as uuidv4 } from 'uuid';
 
+
+
 const Form = ({
     products,
     setProducts,
@@ -107,6 +109,7 @@ const Form = ({
                 id="productName"
                 name="productName"
                 type="text"
+                maxLength={window.innerWidth < 500 ? 14 : 20}
                 label={"Product name"}
                 ref={productInput}
                 value={formData.productName}
@@ -132,7 +135,7 @@ const Form = ({
                 list={formData.measureTypes}
                 onChange={handleChange}
             />
-            <Button text={edit ? "Edit product" : "Add product to fridge"} className="form--btn" />
+            <Button text={edit ? "Edit product" : "Add product"} className="form--btn" />
         </form>
     );
 };
