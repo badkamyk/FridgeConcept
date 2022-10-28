@@ -62,6 +62,7 @@ const Cart = () => {
     return (
         <div className="cart--container">
             <h1>Shopping cart</h1>
+            {cart.length === 0 && <p style={{marginTop: "5em", fontSize: "1.5rem"}}>Your cart is empty</p>}
             <ul>
                 {cartHTMLTable}
             </ul>
