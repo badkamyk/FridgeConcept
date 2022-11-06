@@ -1,18 +1,18 @@
 :root {
-    font-family: Verdana, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
+  font-family: Verdana, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* * {
@@ -20,112 +20,109 @@
   outline-offset: -1px;
 } */
 a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
 }
 
 a:hover {
-    color: #535bf2;
+  color: #535bf2;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    /*place-items: center;*/
-    min-width: 320px;
-    min-height: 100vh;
+  margin: 0;
+  display: flex;
+  /*place-items: center;*/
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
-table {
-    /*width: 100%;*/
-    /*min-width: max-content;*/
-    /* table-layout: fixed; */
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 td {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 table,
 th,
 td {
-    border: 1px solid white;
-    border-collapse: collapse;
-    padding: 12px;
-}
-
-td {
-    /*max-width: 0;*/
+  border: 1px solid white;
+  border-collapse: collapse;
+  padding: 12px;
 }
 
 button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 button:hover {
-    border-color: #646cff;
+  border-color: #646cff;
 }
 
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .form--icons {
-    font-size: 21px;
-    margin-right: 0.6em;
-    color: #fff;
-    background-color: transparent;
+  font-size: 21px;
+  margin-right: 0.6em;
+  color: #fff;
+  background-color: transparent;
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
 
-    a:hover {
-        color: #747bff;
-    }
+  a:hover {
+    color: #747bff;
+  }
 
-    button {
-        background-color: #f9f9f9;
-    }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.MuiTableCell-root.MuiTableCell-body,
+.MuiTableCell-root.MuiTableCell-head {
+  /* min-width: 510px; */
+  color: #fff;
+  font-size: 1rem;
+  font-family: Verdana;
 }
 
 .mui-pagination--container {
-    bottom: 69px;
-    position: absolute;
+  bottom: 69px;
+  position: absolute;
 }
 
 #error-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    line-height: 3;
-    font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  line-height: 3;
+  font-size: 1.8rem;
 }
 
-
-.fridge-items--container {
+/* .fridge-items--container {
     max-width: 30%;
     margin-right: 6em;
     display: flex;
@@ -133,109 +130,122 @@ button:focus-visible {
     align-items: center;
     justify-content: flex-start;
     font-size: 1.2rem;
+} */
+
+.fridge-items--container {
+  margin-right: 6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* font-size: 1.2rem; */
 }
 
 /*# change mui default color*/
 .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium {
-    color: #fff;
-    font-size: 1rem;
+  color: #fff;
+  font-size: 1rem;
 }
 
 div .MuiPaginationItem-root {
-    color: #fff;
+  color: #fff;
 }
 
 @media (max-width: 1000px) {
-    .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium {
-        font-size: 0.8rem;
-        margin-inline: 0;
-    }
-
+  .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium {
+    font-size: 0.8rem;
+    margin-inline: 0;
+  }
 }
 
-@media (max-width: 1000px) {
-    table,
-    th,
-    td {
-        padding: 9px;
-    }
+@media (max-width: 1024px) {
+  table,
+  th,
+  td {
+    padding: 9px;
+  }
 
-    tbody {
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+  tbody {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 
-    tr > td {
-        font-size: 1rem;
-    }
+  tr > td {
+    font-size: 1rem;
+  }
 
-    .form--icons {
-        font-size: 18px;
-    }
+  .form--icons {
+    font-size: 18px;
+  }
 
-    .fridge-items--container {
-        width: 100%;
-        font-size: 0.9rem;
-        margin-inline: auto;
-    }
+  .fridge-items--container {
+    /* width: 100%; */
+    font-size: 0.9rem;
+    margin-inline: auto;
+  }
 
-    .fridge-items--container > h2 {
-        font-size: 1.1rem;
-        margin-bottom: 0.3em;
-    }
+  .fridge-items--container > h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1em;
+  }
 
-    .mui-pagination--container {
-        bottom: 0;
-    }
+  .mui-pagination--container {
+    bottom: 0;
+  }
 
-    nav li {
-        margin: 0;
-    }
+  nav li {
+    margin: 0;
+  }
 }
 
 @media (min-width: 2500px) {
-    table,
-    th,
-    td {
-        padding: 18px;
-    }
+  table,
+  th,
+  td {
+    padding: 18px;
+  }
 
-    tr > td {
-        font-size: 2.5rem;
-    }
+  tr > td {
+    font-size: 2.5rem;
+  }
 
-    th {
-        font-size: 2.5rem;
-    }
+  th {
+    font-size: 2.5rem;
+  }
 
-    tr .form--icons {
-        font-size: 42px;
-    }
+  tr .form--icons {
+    font-size: 42px;
+  }
 
-    .fridge-items--container {
-        font-size: 1.5rem;
-    }
+  .fridge-items--container {
+    font-size: 1.5rem;
+  }
 
-    .fridge-items--container > h2 {
-        font-size: 2.7rem;
-        margin-bottom: 0.3em;
-    }
+  .fridge-items--container > h2 {
+    font-size: 2.7rem;
+    margin-bottom: 0.3em;
+  }
 
-    .mui-pagination--container {
-        bottom: 300px;
-        font-size: 2rem;
-    }
+  .mui-pagination--container {
+    bottom: 300px;
+    font-size: 2rem;
+  }
 
-    div .MuiPaginationItem-root svg {
-        font-size: 3rem;
-    }
+  div .MuiPaginationItem-root svg {
+    font-size: 3rem;
+  }
 
-    div .MuiPaginationItem-root svg {
-        font-size: 3rem;
-    }
+  div .MuiPaginationItem-root svg {
+    font-size: 3rem;
+  }
 
-    .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium {
-        font-size: 2rem;
-    }
+  .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium {
+    font-size: 2rem;
+  }
+
+  .MuiTableCell-root.MuiTableCell-body,
+  .MuiTableCell-root.MuiTableCell-head {
+    font-size: 2rem;
+  }
 }

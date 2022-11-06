@@ -44,3 +44,13 @@ ul td {
   font-size: 1.27rem;
   max-width: 100%;
 }
+
+@media (min-width: 2500px) {
+  td.cart--row {
+    font-size: 2rem;
+  }
+
+  .cart--finish-btn {
+    font-size: 1.5rem;
+  }
+}

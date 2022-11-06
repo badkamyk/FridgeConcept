@@ -42,7 +42,7 @@ const Cart = () => {
     const cartHTMLTable = cart.map((product) => {
         return (
             <tr style={{ borderRadius: "1em" }} key={product.id}>
-                <td style={{ border: "0" }}><Button
+                <td className="cart--row" style={{ border: "0" }}><Button
                     onClick={(e) => handleRemoveCartItem(e, product.id)}
                     text={<i className="fa fa-trash-o"></i>} className={"form--icons"}
                 /></td>
@@ -62,7 +62,6 @@ const Cart = () => {
     return (
         <div className="cart--container">
             <h1>Shopping cart</h1>
-            {cart.length === 0 && <p style={{marginTop: "5em", fontSize: "1.5rem"}}>Your cart is empty</p>}
             <ul>
                 {cartHTMLTable}
             </ul>

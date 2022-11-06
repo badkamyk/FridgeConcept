@@ -104,9 +104,3 @@ select {
     will-change: filter;
   }
 }
-
-@media (min-width: 2500px) {
-  .form-item--container {
-    align-items: center;
-  }
-}
